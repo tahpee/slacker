@@ -336,6 +336,11 @@ class Users(BaseAPI):
     def set_active(self):
         return self.post('users.setActive')
 
+    def conversations(self, user, types=('public_channel',)):
+        if isinstance(types, (list, tuple)):
+            types = ','.join(types)
+        return self.get('users.conversations', params={'user': user, 'types': types})
+
     def get_presence(self, user):
         return self.get('users.getPresence', params={'user': user})
 
