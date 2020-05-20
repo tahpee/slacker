@@ -333,11 +333,6 @@ class Users(BaseAPI):
     def identity(self):
         return self.get('users.identity')
 
-    def conversations(self, user, types=('public_channel',)):
-        if isinstance(types, (list, tuple)):
-            types = ','.join(types)
-        return self.get('users.conversations', params={'user': user, 'types': types})
-
     def set_active(self):
         return self.post('users.setActive')
 
